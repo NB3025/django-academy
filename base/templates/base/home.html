@@ -5,6 +5,13 @@
 <h1>Hoom Template</h1>
 
 <div>
-메인 화면
+    메인 화면
+    <div>
+        {% for academy in academies %}
+
+        <h1>{{ academy.name }} -- {{ academy.address }} -- {{ academy.telephone }}</h1>
+
+        {% endfor %}
+    </div>
 </div>
 {% endblock content%}

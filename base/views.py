@@ -8,7 +8,8 @@ rooms = [
 ]
 
 def home(request):
-    context = {'rooms':rooms}
+    academies = Academy.objects.all()
+    context = {'academies':academies}
     return render(request,'base/home.html',context)
 
 def room(request,pk):
