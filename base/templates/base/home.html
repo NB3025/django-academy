@@ -5,13 +5,6 @@
 <h1>Hoom Template</h1>
 
 <div>
-<div>
-    {% for room in rooms %}
-        <div>
-            <h5>{{ room.id }} --<a href="{% url 'room' room.id %}"> {{ room.name }}</h5></a>
-        </div>
-    {% endfor %}
-</div>
-
+메인 화면
 </div>
 {% endblock content%}
