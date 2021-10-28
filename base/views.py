@@ -15,6 +15,11 @@ def home(request):
 #     context = {'room':room}
 #     return render(request, 'base/room.html', context)
 
+def academy(request,pk):
+    academy = Academy.objects.get(id=pk)
+    context = {'academy': academy}
+    return render(request, 'base/academy.html', context)
+
 def registerAcademy(request):
     context = {}
     return render(request, 'base/academy_register.html',context)

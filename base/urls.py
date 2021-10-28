@@ -6,5 +6,7 @@ urlpatterns = [
     
     path('register-academy/', views.registerAcademy, name="register-academy"),
     
+    path('academy/<str:pk>/', views.academy, name='academy')
+    
     # path('room/<str:pk>/', views.room, name='room')
 ]
