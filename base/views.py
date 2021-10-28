@@ -23,3 +23,7 @@ def academy(request,pk):
 def registerAcademy(request):
     context = {}
     return render(request, 'base/academy_register.html',context)
+
+def registerTeacher(request):
+    context={}
+    return render(request, 'base/teacher_register.html',context)
