@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import Academy
+from .forms import AcademyForm
+
 
 def home(request):
     academies = Academy.objects.all()
@@ -21,8 +23,20 @@ def academy(request,pk):
     return render(request, 'base/academy.html', context)
 
 def registerAcademy(request):
-    context = {}
-    return render(request, 'base/academy_register.html',context)
+    form = AcademyForm()
+
+    if request.method =='POST':
+        form = AcademyForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+
+    context = {'form':form}
+    return render(request, 'base/academy_form.html',context)
+    # return render(request, 'base/academy_register.html',context)
+
+
+
 
 def registerTeacher(request):
     context={}
