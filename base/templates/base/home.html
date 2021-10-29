@@ -8,9 +8,10 @@
     메인 화면
     <div>
         {% for academy in academies %}
-
-        <h1><a href="{% url 'academy' academy.id %}">{{ academy.name }}</a>-- {{ academy.address }} -- {{ academy.telephone }}</h1>
-
+        <div>
+            <a href="{% url 'update-academy' academy.id %}">Edit</a>
+            <h1><a href="{% url 'academy' academy.id %}">{{ academy.name }}</a>-- {{ academy.address }} -- {{ academy.telephone }}</h1>
+        </div>
         {% endfor %}
     </div>
 </div>

@@ -35,7 +35,19 @@ def registerAcademy(request):
     return render(request, 'base/academy_form.html',context)
     # return render(request, 'base/academy_register.html',context)
 
+def updateAcademy(request,pk):
+    academy = Academy.objects.get(id=pk)
+    form = AcademyForm(instance=academy)
 
+    if request.method =='POST':
+        form = AcademyForm(request.POST, instance=academy)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+
+
+    context = {'form':form}
+    return render(request, 'base/academy_form.html', context)
 
 
 def registerTeacher(request):

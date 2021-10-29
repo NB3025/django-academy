@@ -6,6 +6,7 @@ urlpatterns = [
     
     # path('register-academy/', views.registerAcademy, name="register-academy"),
     path('register-academy/', views.registerAcademy, name="register-academy"),
+    path('update-academy/<str:pk>/', views.updateAcademy, name="update-academy"),
     
     path('register-teacher/', views.registerTeacher, name="register-teacher"),
     
