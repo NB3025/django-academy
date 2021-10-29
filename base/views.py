@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import Academy
-from .forms import AcademyForm
+from .forms import AcademyForm, TeacherForm
 
 
 def home(request):
@@ -59,5 +59,13 @@ def deleteAcademy(request,pk):
 
 
 def registerTeacher(request):
-    context={}
-    return render(request, 'base/teacher_register.html',context)
+    form = TeacherForm()
+
+    if request.method == 'POST':
+        form = TeacherForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+            
+    context={'form':form}
+    return render(request, 'base/teacher_form.html',context)
