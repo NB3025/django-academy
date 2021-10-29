@@ -10,6 +10,7 @@
         {% for academy in academies %}
         <div>
             <a href="{% url 'update-academy' academy.id %}">Edit</a>
+            <a href="{% url 'delete-academy' academy.id %}">Delete</a>
             <h1><a href="{% url 'academy' academy.id %}">{{ academy.name }}</a>-- {{ academy.address }} -- {{ academy.telephone }}</h1>
         </div>
         {% endfor %}

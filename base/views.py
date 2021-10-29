@@ -50,6 +50,14 @@ def updateAcademy(request,pk):
     return render(request, 'base/academy_form.html', context)
 
 
+def deleteAcademy(request,pk):
+    academy=Academy.objects.get(id=pk)
+    if request.method == 'POST':
+        academy.delete()
+        return redirect('home')
+    return render(request, 'base/delete.html', {'obj':academy})
+
+
 def registerTeacher(request):
     context={}
     return render(request, 'base/teacher_register.html',context)
