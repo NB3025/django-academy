@@ -10,6 +10,9 @@ urlpatterns = [
     path('delete-academy/<str:pk>/', views.deleteAcademy, name="delete-academy"),
     
     path('register-teacher/', views.registerTeacher, name="register-teacher"),
+    path('update-teacher/<str:pk>/', views.updateTeacher, name="update-teacher"),
+    path('delete-teacher/<str:pk>/', views.deleteTeacher, name="delete-teacher"),
+    
     
     path('register-student/', views.registerStudent, name="register-student"),
 

@@ -36,7 +36,6 @@ def registerAcademy(request):
 
     context = {'form':form}
     return render(request, 'base/academy_form.html',context)
-    # return render(request, 'base/academy_register.html',context)
 
 def updateAcademy(request,pk):
     academy = Academy.objects.get(id=pk)
@@ -47,7 +46,6 @@ def updateAcademy(request,pk):
         if form.is_valid():
             form.save()
             return redirect('home')
-
 
     context = {'form':form}
     return render(request, 'base/academy_form.html', context)
@@ -72,6 +70,29 @@ def registerTeacher(request):
 
     context={'form':form}
     return render(request, 'base/teacher_form.html',context)
+
+
+def updateTeacher(request,pk):
+    teacher = Teacher.objects.get(id=pk)
+    form = TeacherForm(instance=teacher)
+
+    if request.method =='POST':
+        form = TeacherForm(request.POST, instance=teacher)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+
+    context = {'form':form}
+    return render(request, 'base/teacher_form.html', context)
+
+
+def deleteTeacher(request,pk):
+    teacher=Teacher.objects.get(id=pk)
+    if request.method == 'POST':
+        teacher.delete()
+        return redirect('home')
+    return render(request, 'base/delete.html', {'obj':teacher})
+
 
 def registerStudent(request):
     form = StudentForm()

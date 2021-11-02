@@ -11,6 +11,8 @@
         <p>선생님 목록입니다.</p>
         <div>
             {% for teacher in teachers %}
+            <a href="{% url 'update-teacher' teacher.id %}">Edit</a>
+            <a href="{% url 'delete-teacher' teacher.id %}">Delete</a>
             <p> {{ teacher.name }} -- {{ teacher.subject }} -- {{teacher.telephone}}</p>
             {% endfor %}
         </div>
