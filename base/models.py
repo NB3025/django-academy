@@ -30,7 +30,7 @@ class Teacher(models.Model):
     def __str__(self):
         return self.name
 
-class tb_student(models.Model):
+class Student(models.Model):
     # 1 홍길동 경안고 3 010 - 1234 - 1234
     # studentId = models.PositiveIntegerField()
     academy = models.ForeignKey(Academy, on_delete=models.CASCADE)
