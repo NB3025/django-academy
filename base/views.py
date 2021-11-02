@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from .models import Academy, Teacher
-from .forms import AcademyForm, TeacherForm
+from .models import Academy, Teacher, Student
+from .forms import AcademyForm, TeacherForm, StudentForm
 
 
 def home(request):
@@ -19,9 +19,10 @@ def home(request):
 
 def academy(request,pk):
     academy = Academy.objects.get(id=pk)
-    teacher = Teacher.objects.filter(academy=academy.id)
+    teachers = Teacher.objects.filter(academy=academy.id)
+    students = Student.objects.filter(academy=academy.id)
 
-    context = {'academy': academy, 'teachers':teacher}
+    context = {'academy': academy, 'teachers':teachers, 'students':students}
     return render(request, 'base/academy.html', context)
 
 def registerAcademy(request):
@@ -71,3 +72,15 @@ def registerTeacher(request):
 
     context={'form':form}
     return render(request, 'base/teacher_form.html',context)
+
+def registerStudent(request):
+    form = StudentForm()
+
+    if request.method == 'POST':
+        form = StudentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+
+    context = {'form':form}
+    return render(request, 'base/student_form.html', context)

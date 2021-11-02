@@ -14,6 +14,12 @@
             <p> {{ teacher.name }} -- {{ teacher.subject }} -- {{teacher.telephone}}</p>
             {% endfor %}
         </div>
+        <p>학생 목록입니다.</p>
+        <div>
+            {% for student in students %}
+            <p> {{student.name }} -- {{ student.school }} -- {{ student.grade }}</p>
+            {% endfor %}
+        </div>
     </div>
 </div>
 {% endblock content%}

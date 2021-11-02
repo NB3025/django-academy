@@ -11,6 +11,8 @@ urlpatterns = [
     
     path('register-teacher/', views.registerTeacher, name="register-teacher"),
     
+    path('register-student/', views.registerStudent, name="register-student"),
+
     path('academy/<str:pk>/', views.academy, name='academy')
     
     # path('room/<str:pk>/', views.room, name='room')
