@@ -49,3 +49,6 @@ class tb_student(models.Model):
     # studentMTel = models.CharField(max_length=30, null=True)
     comment = models.CharField(max_length=100, null=True)
     # customerId = models.ForeignKey(tb_customer, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.name
