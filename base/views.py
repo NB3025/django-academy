@@ -9,13 +9,6 @@ def home(request):
     context = {'academies':academies}
     return render(request,'base/home.html',context)
 
-# def room(request,pk):
-#     room = None
-#     for i in rooms:
-#         if i['id'] == int(pk):
-#             room = i
-#     context = {'room':room}
-#     return render(request, 'base/room.html', context)
 
 def academy(request,pk):
     academy = Academy.objects.get(id=pk)
@@ -105,3 +98,25 @@ def registerStudent(request):
 
     context = {'form':form}
     return render(request, 'base/student_form.html', context)
+
+
+def updateStudent(request,pk):
+    student = Student.objects.get(id=pk)
+    form = StudentForm(instance=student)
+
+    if request.method =='POST':
+        form = StudentForm(request.POST, instance=student)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+
+    context = {'form':form}
+    return render(request, 'base/student_form.html', context)
+
+
+def deleteStudent(request,pk):
+    student=Student.objects.get(id=pk)
+    if request.method == 'POST':
+        student.delete()
+        return redirect('home')
+    return render(request, 'base/delete.html', {'obj':student})
